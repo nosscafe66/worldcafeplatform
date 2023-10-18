@@ -1,3 +1,5 @@
+version: '3.1'
+
 services:
   backend:
     build:
@@ -8,7 +10,14 @@ services:
     volumes:
       - ./backend:/app 
     depends_on:
-      - db
+      - db # 依存関係の名前は変更せず、'db'の設定内容のみをMySQL用に変えます。
+    environment: # 必要に応じてバックエンドからデータベース情報を取得するための環境変数を設定
+      - DATABASE_HOST=db
+      - DATABASE_USER=root # MySQLのユーザー名
+      - DATABASE_PASSWORD=examplepassword # 実際のパスワードに変更してください
+      - DATABASE_NAME=worldcafedb
+      - DATABASE_PORT=3306
+
   frontend:
     build:
       context: ./frontend/
@@ -17,15 +26,18 @@ services:
       - ./frontend:/app
     ports:
       - 3000:3000 
-  db:
-    image: "postgres:15-alpine"
-    ports:
-      - "5432:5432"
+
+  db: # ここでPostgreSQLの設定をMySQLに置き換えます。
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=db
+      MYSQL_ROOT_PASSWORD: examplepassword # ここを安全なパスワードに変更してください
+      MYSQL_DATABASE: worldcafedb
+    ports:
+      - "3306:3306"
     volumes:
-      - db-store:/var/lib/postgresql/data
+      - db-store:/var/lib/mysql # MySQL用のパスに変更
 
 volumes:
-  db-store:
+  db-store: # ボリューム定義はそのままですが、内容はMySQLのデータになります。

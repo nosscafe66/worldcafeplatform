@@ -1,0 +1,3 @@
+データベース接続方法
+mysql -u root -p -h worldcafeplatform-db-1 -P 3306 worldcafedb
+examplepassword

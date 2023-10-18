@@ -1,0 +1,21 @@
+body {
+    background-color: #f5f5dc; /* ベージュ */
+    color: #4B5320; /* 緑 */
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav li {
+    display: inline;
+    margin: 0 15px;
+  }
+  
