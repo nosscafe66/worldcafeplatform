@@ -41,36 +41,17 @@
 //   );
 // }
 
-
-import Link from 'next/link'
-import Image from 'next/image';
-
-export default function Home() {
+import Page from '../components/clientsidecomponent';
+function Home() {
   return (
-    <div className="container">
-      <header>
-      <Image src="/path/to/image.jpg" alt="Description" width={500} height={300} />
-        <nav>
-          <ul>
-            <li><Link href="/page1">ページ1</Link></li>
-            <li><Link href="/page2">ページ2</Link></li>
-            <li><Link href="/page3">ページ3</Link></li>
-          </ul>
-        </nav>
-      </header>
-      <main>
-        <section>
-          <h1>SANJOY!</h1>
-          <p>こちらはサンジョイのポータルサイトです。</p>
-        </section>
-        <section>
-          <h2>サービス紹介</h2>
-          {/* // サービスの詳細情報や画像を追加 */}
-        </section>
-      </main>
-      <footer>
-        © 2023 SANJOY. All Rights Reserved.
-      </footer>
+    <div>
+      {/* 他のUIコンポーネント */}
+      
+      <Page />
+      
+      {/* 他のUIコンポーネント */}
     </div>
-  )
+  );
 }
+
+export default Home;
